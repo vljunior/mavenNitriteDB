@@ -1,8 +1,9 @@
-package exemplo.domain;
+package exemploaluno.repository;
 
-import exemplo.domain.Aluno;
+import exemploaluno.domain.Aluno;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.dizitart.no2.objects.filters.ObjectFilters;
 import java.util.List;
 
 public class AlunoRepositoryNitrite {
@@ -11,9 +12,8 @@ public class AlunoRepositoryNitrite {
 
     public AlunoRepositoryNitrite() {
         this.db = Nitrite.builder()
-                .filePath("alunos.db")   // cria/abre o arquivo do banco
+                .filePath("alunos.db")
                 .openOrCreate("user", "password");
-
         this.repo = db.getRepository(Aluno.class);
     }
 
@@ -25,17 +25,18 @@ public class AlunoRepositoryNitrite {
         return repo.find().toList();
     }
 
+    // Buscar por matrícula (chave de negócio)
     public Aluno buscarPorMatricula(String matricula) {
-        return repo.getById(matricula);
+        return repo.find(ObjectFilters.eq("matricula", matricula))
+                   .firstOrDefault();
     }
 
-    public void deletar(String matricula) {
-        Aluno a = repo.getById(matricula);
-        if (a != null) repo.remove(a);
+    // Deletar por matrícula
+    public void deletarPorMatricula(String matricula) {
+        repo.remove(ObjectFilters.eq("matricula", matricula));
     }
 
     public void fechar() {
         db.close();
     }
 }
-
