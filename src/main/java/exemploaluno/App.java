@@ -2,14 +2,16 @@ package exemploaluno;
 
 import java.util.List;
 
-import exemploaluno.domain.Aluno;
-import exemploaluno.repository.AlunoRepositoryNitrite;
-import exemploaluno.service.AlunoService;
+import exemploaluno.dominio.Aluno;
+import exemploaluno.repositorio.AlunoRepositorioNitrite;
+import exemploaluno.servico.AlunoServico;
 
 public class App {
     public static void main(String[] args) {
-        AlunoRepositoryNitrite repo = new AlunoRepositoryNitrite();
-        AlunoService service = new AlunoService(repo);
+        
+        AlunoRepositorioNitrite repositorio = new AlunoRepositorioNitrite();
+
+        AlunoServico service = new AlunoServico(repositorio);
 
         service.cadastrarAluno(new Aluno("2025001", "Lorenzon", 20));
         service.cadastrarAluno(new Aluno("2025002", "Maria", 22));

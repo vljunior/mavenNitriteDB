@@ -1,4 +1,4 @@
-package exemploaluno.domain;
+package exemploaluno.dominio;
 import java.util.UUID;
 
 import org.dizitart.no2.NitriteId;

@@ -1,16 +1,18 @@
-package exemploaluno.repository;
+package exemploaluno.repositorio;
 
-import exemploaluno.domain.Aluno;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.objects.filters.ObjectFilters;
+
+import exemploaluno.dominio.Aluno;
+
 import java.util.List;
 
-public class AlunoRepositoryNitrite {
+public class AlunoRepositorioNitrite {
     private final Nitrite db;
     private final ObjectRepository<Aluno> repo;
 
-    public AlunoRepositoryNitrite() {
+    public AlunoRepositorioNitrite() {
         this.db = Nitrite.builder()
                 .filePath("alunos.db")
                 .openOrCreate("user", "password");
