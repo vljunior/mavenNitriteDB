@@ -39,6 +39,6 @@ public class App {
             System.out.println(aluno);
         }
         
-        repo.fechar();
+        repositorio.fechar();
     }
 }

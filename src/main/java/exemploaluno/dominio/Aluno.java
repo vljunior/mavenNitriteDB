@@ -35,14 +35,44 @@ public class Aluno {
         this.idade = idade;
     }
 
-    public NitriteId getId()        { return id; }
-    public String getMatricula()    { return matricula; }
-    public String getNome()         { return nome; }
-    public int getIdade()           { return idade; }
+    public NitriteId getId() { 
+        return id; 
+    }
+    
+    public String getMatricula() { 
+        return matricula; 
+    }
+    
+    public String getNome() { 
+        return nome; 
+    }
+
+    public int getIdade() { 
+        return idade; 
+    }
 
     @Override
     public String toString() {
         return "Aluno{id=" + id + ", matricula='" + matricula + "', nome='" + nome + "', idade=" + idade + "}";
+    }
+
+    @Override
+    public int hashCode() {            
+        return matricula;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+   
+        Aluno outro = (Aluno) obj;        
+        
+        if (matricula == null) {
+            if (outro.matricula != null)
+                return false;
+        } else if (!matricula.equals(outro.matricula))
+            return false;
+        
+        return true;
     }
 }
 
