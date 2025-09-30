@@ -36,6 +36,21 @@ public class AlunoRepositoryNitrite {
         repo.remove(ObjectFilters.eq("matricula", matricula));
     }
 
+    //update - dar insert com o mesmo id
+
+    public void atualizarAluno(Aluno aluno) {
+        // Atualiza pelo campo @Id (matricula)
+        repo.update(aluno, true); 
+    }
+
+    public void atualizarNomePorMatricula(String matricula, String novoNome) {
+        Aluno aluno = buscarPorMatricula(matricula);
+        if (aluno != null) {
+            aluno.setNome(novoNome);
+            repo.update(aluno, true);
+        }
+    }
+
     public void fechar() {
         db.close();
     }
